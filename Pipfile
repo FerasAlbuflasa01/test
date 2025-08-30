@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 python-dotenv = "*"
 django = "*"
+dj-database-url = "*"
+gunicorn = "*"
+whitenoise  = "*"
 
 [dev-packages]
 
