@@ -2,7 +2,7 @@
 let map
 let userMarker
 const initMap = async () => {
-  const response = await axios.get('http://127.0.0.1:8000/location/load')
+  const response = await axios.get('https://logisync-eadf6892bb3a.herokuapp.com/location/load')
   const { Map } = await google.maps.importLibrary('maps')
   const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
   //init map
@@ -55,7 +55,7 @@ const initMap = async () => {
   // The map, centered at Uluru
 }
 const sendUpdateLocation = async (pos) => {
-  let response = axios.post('http://127.0.0.1:8000/location/save', pos)
+  let response = axios.post('https://logisync-eadf6892bb3a.herokuapp.com/location/save', pos)
 }
 
 initMap()
