@@ -10,6 +10,7 @@ django = "*"
 dj-database-url = "*"
 gunicorn = "*"
 whitenoise  = "*"
+Pillow  = "*"
 
 [dev-packages]
 
