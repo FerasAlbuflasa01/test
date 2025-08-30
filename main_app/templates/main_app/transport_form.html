@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="create-container">
+  <h2>Create transport</h2>
+
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %} {% if object %}
+    <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+    {% else %}
+    <h1>Add transport</h1>
+    {% endif %}
+      {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+      <input type="submit" value="Submit!" class="btn" />
+
+      {% endblock %}
+  </form>
+</div>

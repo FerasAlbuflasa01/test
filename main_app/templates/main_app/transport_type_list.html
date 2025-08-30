@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form action="{% url 'transport_type_update'%}" enctype="multipart/form-data">
+  
+  <div class="type_detail">
+    <div>
+      {% load static %}
+      <img src="{% static transporttype.image %}" alt="type_image">
+    </div>
+
+    <p>Transport Type Name: {{ transporttype.name }}</p>
+    <p>Transport Type Code: {{ transporttype.code }}</p>
+    
+    <div class="card-action">
+      <a href="{% url 'transport_type_update' transport_type.id %}">Edit</a>
+      <a href="{% url 'transport_type_delete' transport_type.id %}">Delete</a>
+    </div>
+
+  </div>
+</form>
+{% endblock %}

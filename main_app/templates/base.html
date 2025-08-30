@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      
+    <title>LogiSync</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 class="logo">
+        <a href="{% url 'home' %}"><strong>LogiSync</strong></a>
+      </h1>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li>
+              <a href="{% url 'home' %}"><strong>Home</strong></a>
+            </li>
+
+            {% if user.is_authenticated %} 
+              {% if user.profile.role != 'supervisor' %}
+                <li>
+                  <a href="{% url 'container_create' %}"
+                    ><strong>Create Container</strong></a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'transport_create' %}"
+                    ><strong>Create Transport</strong></a
+                  >
+                </li>
+            {% endif %}
+
+            <li>
+              <a href="{% url 'container_list' %}"
+                ><strong>Containers List</strong></a
+              >
+            </li>
+            <li>
+              <a href="{% url 'transport_list' %}"
+                ><strong>Transports List</strong></a
+              >
+            </li>
+            <li>
+              <a href="{% url 'profile_detail' %}"
+                ><strong>My Profile</strong></a
+              >
+            </li>
+            <li>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Logout</button>
+              </form>
+            </li>
+            {% else %}
+            <li>
+              <a href="{% url 'signup' %}"><strong>Sign Up</strong></a>
+            </li>
+            <li>
+              <a href="{% url 'login' %}"><strong>Log In</strong></a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">{% block content %} {% endblock content %}</main>
+    </div>
+  </body>
+</html>

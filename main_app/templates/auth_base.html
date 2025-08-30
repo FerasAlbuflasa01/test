@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} LogiSync {% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+  </head>
+  <body>
+    <div class="auth-wrapper">
+      <div class="auth-box">
+        <h1 class="auth-title">
+          {% block heading %} Welcome to LogiSync {% endblock %}
+        </h1>
+
+        {% block content %} {% endblock %} {% block footer %} {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

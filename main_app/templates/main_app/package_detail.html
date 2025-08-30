@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Package Details</h1>
+<h5>package code:{{package.code}}</h5>
+<h5>Owned by: {{package.owner}}</h5>
+<h5>Package Description: {{package.description}}</h5>
+<h5>Price: {{package.price}} BHD</h5>
+<h5>Weight: {{package.weight}} Kg</h5>
+<h5>Package Arrived at whaerhous At {{package.receivedDate}}</h5>
+
+
+  <a href="{% url 'packages_update' package.id %}">Edit</a>
+
+  <a href="{% url 'packages_delete' package.id %}">Delete</a>
+
+
+{% endblock %}
+
+
+
+  

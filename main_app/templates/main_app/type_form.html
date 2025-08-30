@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if transporttype %}
+  <h1>Existing Transport Types</h1>
+  <div class="type_list">
+    {% for type in transporttype %}
+      <div class="type_detail">
+        <div>
+          {% if type.image %}
+            {% load static %}
+            <img src="{{ type.image.url }}" alt="type_image">
+          {% endif %}
+        </div>
+
+        <p>Transport Type Name: {{ type.name }}</p>
+        <p>Transport Type Code: {{ type.code }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h1>Add Transport Type</h1>
+{% else %}
+  <h1>Add Transport Type</h1>
+{% endif %}
+
+<div class="type-form">
+  <form method="post" action="{% url 'transport_type_create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="transport-type-btn">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

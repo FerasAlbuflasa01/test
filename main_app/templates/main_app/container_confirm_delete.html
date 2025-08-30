@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Delete Container</h2>
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <input type="submit" value="yes" class="btn">
+  <a href="{% url 'container_detail' container.pk %}">Cancel</a>
+</form>
+  
+{% endblock  %}
+  

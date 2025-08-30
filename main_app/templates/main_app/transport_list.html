@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>transport List</h1>
+
+{% for transport in transport_list %}
+<div class="card">
+  <a href="{% url 'transport_detail' transport.id %}">
+  <div class="card-content">
+    <span class="card-title"> {{transport.name}} </span>
+    <p>name: {{transport.name}}</p>
+    <p>description: {{transport.description}}</p>
+  </div>
+  </a>
+</div>
+{% endfor %} {% endblock %}

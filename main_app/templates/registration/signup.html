@@ -1,0 +1,23 @@
+{% extends 'auth_base.html' %} 
+{% block title %} Sign Up {% endblock %}
+{% block heading %} Create your LogiSync Account {% endblock %} 
+{% block content %} 
+{% if error_message %}
+<p class="red-text">{{ error_message }}</p>
+{% endif %}
+
+<form method="post" action="{% url 'signup' %}">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" class="btn" value="signup" />
+</form>
+
+{% endblock %} {% block footer %}
+<div class="auth-footer">
+  <p>
+    Already have an Account?
+    <a href="{% url 'login' %}">Click here to Log In</a>
+  </p>
+  <p><a href="{% url 'home' %}">Back to Home</a></p>
+</div>
+
+{% endblock %}

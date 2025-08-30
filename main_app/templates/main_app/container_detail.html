@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+  <h2>Container Details</h2>
+</div>
+
+<div class="container-detail">
+  <div class="detail-section">
+    <label>Tracking location</label>
+    <p>{{ container.tracking_location}}</p>
+  </div>
+  <div class="detail-section">
+    <label>Weight Capacity</label>
+    <p>{{ container.weight_capacity}}</p>
+  </div>
+  <div class="detail-section">
+    <label>Current Weight Capacity</label>
+    <p>{{ container.currnt_weight_capacity}}</p>
+  </div>
+  <div class="detail-section">
+    <label>Description</label>
+    <p>{{ container.description}}</p>
+  </div>
+
+  <a href="{% url 'container_update' container.id %}">Edit</a>
+
+  <a href="{% url 'container_delete' container.id %}">Delete</a>
+
+  {% if msg %}
+    <h2>{{msg}}</h2>
+  {% endif %}
+</div class="continer-packages">
+<h2>packages that are in continer</h2>
+<h4> current continer weight {{container.currnt_weight_capacity}}</h4>
+{% if packages_exsist.count %}
+
+{% for package in packages_exsist %}
+
+    <a href="{% url 'packages_detail' package.id %} ">
+       <h2>{{package.code}}</h2>
+       <h2>package weight: {{package.weight}}</h2>
+    </a>
+  
+        <form action="{% url 'unassoc_package' container.id package.id %}" method="post">
+          {% csrf_token %}
+      <button type="submit"> remove</button>
+    </form>
+{% endfor %}
+  
+{% endif %}
+</div>
+
+<div class="packages">
+<h2>packages that are not in continer</h2>
+  {% for package in packages %}
+    <a href="{% url 'packages_detail' container.id %} ">
+      <h2>{{package.code}}</h2>
+      <h2>package weight: {{package.weight}}</h2>
+    </a>
+        <form action="{% url 'assoc_package' container.id package.id %}" method="post">
+          {% csrf_token %}
+      <button type="submit"> add</button>
+    </form>
+  {% endfor %}
+    
+</div>
+
+{% endblock  %}

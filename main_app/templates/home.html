@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="hero">
+  <h1>Welcome to <span class="brand">LogiSync</span></h1>
+  <p class="tagline">
+    Your logistics, streamlined. Built for clarity, control, and collaboration.
+  </p>
+  <a href="{% url 'signup' %}" class="btn-primary">Get Started</a>
+</div>
+
+<div class="about-section">
+  <h2>About LogiSync</h2>
+  <p>
+    LogiSync is a logistics management platform designed to simplify complex
+    workflows. Whether you're a supervisor organizing shipments or a driver
+    picking up deliveries, LogiSync keeps your operations smooth, secure, and
+    scalable.
+  </p>
+  <div class="features-grid">
+    <div class="feature-card">📦 Container & Package Tracking</div>
+    <div class="feature-card">🚚 Role-Based Transport Assignment</div>
+    <div class="feature-card">🔐 Secure Authentication & Access Control</div>
+    <div class="feature-card">🧩 Modular Design for Easy Onboarding</div>
+  </div>
+</div>
+{% endblock %}
