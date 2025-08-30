@@ -1,8 +1,9 @@
 // Initialize and add the map
 let map
 let userMarker
+const currentUrl = window.location.href
 const initMap = async () => {
-  const response = await axios.get('https://logisync-eadf6892bb3a.herokuapp.com/location/load')
+  const response = await axios.get(`${currentUrl}/location/load`)
   const { Map } = await google.maps.importLibrary('maps')
   const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
   //init map
@@ -55,7 +56,7 @@ const initMap = async () => {
   // The map, centered at Uluru
 }
 const sendUpdateLocation = async (pos) => {
-  let response = axios.post('https://logisync-eadf6892bb3a.herokuapp.com/location/save', pos)
+  let response = axios.post(`${currentUrl}/location/save`, pos)
 }
 
 initMap()
