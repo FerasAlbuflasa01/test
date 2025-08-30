@@ -3,7 +3,7 @@ let map
 let userMarker
 const currentUrl = window.location.href
 const initMap = async () => {
-  const response = await axios.get(`${currentUrl}/location/load`)
+  const response = await axios.get(`${currentUrl}load`)
   const { Map } = await google.maps.importLibrary('maps')
   const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
   //init map
@@ -56,7 +56,7 @@ const initMap = async () => {
   // The map, centered at Uluru
 }
 const sendUpdateLocation = async (pos) => {
-  let response = axios.post(`${currentUrl}/location/save`, pos)
+  let response = axios.post(`${currentUrl}save`, pos)
 }
 
 initMap()
