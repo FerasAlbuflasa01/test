@@ -5,7 +5,6 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic import ListView,DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-import requests
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
